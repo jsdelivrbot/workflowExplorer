@@ -1,0 +1,67 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(53, 172, 219);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+.app {
+  padding: 25px;
+  width: 800px;
+  text-align: left;
+}
+
+.app__header {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.app__content {
+  padding: 0 105px;
+  margin-bottom: 15px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.card_panel{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+  
+}
+
+.card{
+    padding: 4px;
+    width: 200px;
+    height: 100px;
+}
+
+.app__loading {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search__info {
+  margin-bottom: 10px;
+}
+
+.search__component__result {
+  margin-top: 15px;
+}
