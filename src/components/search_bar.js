@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 import Search from 'react-search-box';
 import jsonData from '../resource/WorkflowData.json';
+import Workflows from './workflow-grid';
 
 import '../../style/style.css';
 
 export default class SearchBar extends Component {
+  
   constructor() {
     super();
-    console.log(jsonData);   
-    
+    this.filterData = this.filterData.bind(this);
+    var arr = [];     
+    var workflowTile=[];
+      Object.keys(jsonData).forEach(function(key) {
+        arr.push(jsonData[key]);
+      });
     this.state = {        
       data: jsonData,
-      loading: false
+      loading: false,
+      searchValue:'',
+      filteredWorkFlow: arr
     };
   }
+
+  filterData (returnedData) {
+    console.log("Filter data called"+returnedData);
+    if(returnedData==null){ this.setState({filteredWorkFlow:this.arr})}
+    else this.setState({filteredWorkFlow: returnedData});
+    this.arr = returnedData;
+    console.log("Filter data called2"+ this.state.filteredWorkFlow);
+};
 
 //   componentDidMount() {
 //     this.setState({
@@ -32,9 +48,8 @@ export default class SearchBar extends Component {
 //   }
 
   handleChange(value) {
-    console.log(value);
-    console.log(this.jsonData);
-  }
+    this.setState({searchValue:value});
+  };
 
   render() {
     
@@ -47,16 +62,11 @@ export default class SearchBar extends Component {
     return (
       <div className="app">
         <div className="app__header">
-          <div className="header__title">
-            <h2>Workflow Explorer</h2>
-          </div>
           
         </div>
         <div className="app__content">
           <div className="content__search content__search--with-full_name">
-            <div className="search__info">
-              <h4>Search Workflow</h4>
-            </div>
+
             <div className="search__component">
               <Search
                 data={ this.state.data }
@@ -64,11 +74,13 @@ export default class SearchBar extends Component {
                 placeholder="Search for a string..."
                 class="search-class"
                 searchKey="Name"
+                getData = {this.filterData}
               />
             </div>
           </div>
-        </div>
-      </div>
+        </div>        
+        <Workflows value = {this.state.filteredWorkFlow} />
+      </div>            
     );
   }
 }

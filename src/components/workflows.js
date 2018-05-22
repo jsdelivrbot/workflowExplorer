@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardHeader, CardBody, CardFooter } from "react-simple-card";
 import Tile from './tile';
+import Pagination from "react-js-pagination";
 
 const Workflow = (props) =>{
     const workflowTiles = props.workflows.map((workflow) => {
